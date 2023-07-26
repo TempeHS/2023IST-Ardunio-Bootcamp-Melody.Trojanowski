@@ -9,6 +9,9 @@
     5. I understand the impact of having more than one setup or loop methods in my sketch
   
   Student Notes: 
+  
+  serial print prints words
+  serial.println makes a new line
 
   Documentation: 
     https://www.arduino.cc/reference/en/language/functions/communication/serial/

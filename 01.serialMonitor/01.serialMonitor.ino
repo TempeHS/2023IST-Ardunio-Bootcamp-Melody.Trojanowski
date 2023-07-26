@@ -17,10 +17,16 @@
 
 // The setup function runs once when you press reset or power the board
 void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+Serial.println("serial monitor is configured to 9600br");
 
 }
 
-// The loop function runs over and over again forever
 void loop() {
-
+  // put your main code here, to run repeatedly:
+while(!Serial.available());
+String myString = Serial.readString();
+Serial.println(myString);
 }
+

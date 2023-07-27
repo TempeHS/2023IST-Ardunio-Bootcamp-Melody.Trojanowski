@@ -12,6 +12,7 @@
   
   serial print prints words
   serial.println makes a new line
+  can only have 1 setup + loop function
 
   Documentation: 
     https://www.arduino.cc/reference/en/language/functions/communication/serial/

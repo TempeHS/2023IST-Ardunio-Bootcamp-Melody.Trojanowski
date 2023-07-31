@@ -10,14 +10,26 @@
     6. I understand the difference between a global variable and a function variable 
 
   Student Notes: 
-
+unsigned long = store 0 - 0^20
+static means data doesn't change
   Documentation: 
     https://www.arduino.cc/reference/en/#variables
     https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/
 */
 
-void setup() {
+int myInt = 3;
+String myString = "3";
+bool myBool = 0;
+float myFloat = 1.1;
+unsigned long myLong = ;
 
+void setup() {
+Serial.begin (9600);
+Serial.println("Serial Monitor is configured to 9600");
+Serial.println("................................");
+Serial.print("Data Stored:  ");
+myString = String(myInt);
+Serial.println(myString);
 }
 
 void loop() {

@@ -23,20 +23,23 @@
 
 */
 
-static unsigned int onBoardLED = 13;
+static unsigned int myLED = 4;
+static unsigned int myBuzzer = 3;
 bool LEDStatus = false;
 
 void setup() {
 Serial.begin(9600);
 Serial.println("Serial Monitor configured to 9600");
 Serial.println("...............................");
-pinMode(onBoardLED, OUTPUT); 
+pinMode(myLED, OUTPUT); 
+pinMode(myBuzzer, OUTPUT); 
 }
 
 void loop() {
-LEDStatus = !LEDStatus;
-digitalWrite(onBoardLED, LEDStatus);
-Serial.print("onBoardLED value = ");
-Serial.println(digitalRead(onBoardLED));
-delay (1000);
+digitalWrite(myLED, HIGH);
+tone(myBuzzer, 128);
+delay (500);
+digitalWrite(myLED, LOW);
+noTone(myBuzzer);
+delay (5000);
 }

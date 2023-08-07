@@ -11,6 +11,8 @@
     7. I can apply this knowledge to the Button and the Line Finder in the sensor kit
 
   Student Notes: 
+  double == means a question
+  normal = means a statement
 
   Documentation: 
     https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/
@@ -20,10 +22,11 @@
     https://github.com/TempeHS/TempeHS_Ardunio_Boilerplate/blob/main/Ardunio_Bootcamp/04.digitalRead/Bootcamp-digitalRead.png
 */
 
+
 static unsigned int myLED = 4;
 static unsigned int myBuzzer = 3;
-bool LEDStatus = false;
-
+static unsigned int myButton = 2;
+static unsigned int myLineSensor = 8;
 
 void setup() {
 Serial.begin(9600);
@@ -32,11 +35,20 @@ Serial.println("...............................");
 pinMode(myLED, OUTPUT); 
 pinMode(myBuzzer, OUTPUT); 
 pinMode (myButton, INPUT);
+pinMode (myLineSensor, INPUT);
 }
 
 void loop() {
 int val = digitalRead(myButton);
-Serial.println(String(val))
+int senVal = digitalRead(myLineSensor);
+Serial.print ("myButtonValue");
+Serial.println(String(val));
+Serial.print(",");
+Serial.print ("lineSensorValue");
+Serial.println(String(senVal));
+if (val == 1) {
+  //myAlert();  
+}
 }
 
 void myAlert () {

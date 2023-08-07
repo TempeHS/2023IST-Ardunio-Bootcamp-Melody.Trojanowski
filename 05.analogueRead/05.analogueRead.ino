@@ -1,5 +1,5 @@
 /*
-  Author: 
+  Author: Melody Trojanowski
   Learning Intention: The students will learn how to wire a variable resistor as a pseudo sensor and read analogue data from that PIN.
   Success Criteria:
     1. I can wire a variable resistor in TINKERCAD
@@ -16,10 +16,18 @@
     https://github.com/TempeHS/TempeHS_Ardunio_Boilerplate/blob/main/Ardunio_Bootcamp/05.serialRead/Bootcamp-serialRead.png
 */
 
-void setup() {
+static unsigned int myVarResistor = A0;
 
+void setup() {
+Serial.begin(9600);
+Serial.println("Serial Monitor configured to 9600");
+Serial.println("...............................");
 }
 
 void loop() {
-
+unsigned int val = analogRead(myVarResistor);
+Serial.print("Potentiometer Value");
+Serial.println(val);
+Serial.print(",");
+Serial.print("");
 }

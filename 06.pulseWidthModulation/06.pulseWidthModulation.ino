@@ -16,10 +16,25 @@
     https://github.com/TempeHS/TempeHS_Ardunio_Boilerplate/blob/main/Ardunio_Bootcamp/06.pulseWidthModulation/Bootcamp-PWMOutput.png
 */
 
-void setup() {
+static unsigned int lightSensor = A0;
+static unsigned int myLED = 5;
 
+void setup() {
+//configure serial monitor
+Serial.begin(9600);
+//debug serial monitor
+Serial.println("Serial Monitor configured to 9600");
+Serial.println("...............................");
+pinMode(myLED, OUTPUT);
 }
 
 void loop() {
-
+//read serial data from light sensor
+int val = analogRead(lightSensor);
+//write serial data from light sensor
+Serial.print("Light Sensor:");
+Serial.println(val);
+//write serial data to myLED
+int LEDbright = 255;
+analogWrite(myLED, LEDbright);
 }

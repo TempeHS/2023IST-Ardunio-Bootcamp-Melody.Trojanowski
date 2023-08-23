@@ -20,7 +20,7 @@
 */
 
 #include <Servo.h>
-#include <Ultrasonic-h>
+#include "Ultrasonic.h"
 
 //create servo object
 Servo myServo;
@@ -47,9 +47,14 @@ delay (250);
 // The LOOP function runs over and over again forever
 void loop() {
 
-distance = myUS.read();
-Serialprint.ln(distance);
+distance = myUS.MeasureInCentimeters();
+Serial.println(distance);
 
+if (distance < 30) {
+myServo.write(0);
+} else {
+myServo.write(180);
+}
 
 
 

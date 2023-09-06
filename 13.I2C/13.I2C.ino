@@ -26,26 +26,46 @@
     Air Pressure Sensor: https://github.com/TempeHS/TempeHS_Ardunio_Boilerplate/blob/main/TempeHS_Sensor_Catalogue/Sensor%20Kit/Air_Pressure_Sensor/Air_Pressure_Sensor.ino
 */
 
+//include for IC2 comm
 #include <Arduino.h>
-#include <U8g2lib.h>
 #include <Wire.h>
 
-String myMessage = "hh";
-String myMessage2 = "hh";
+//include for OLED display
+#include <U8g2lib.h>
 
+//include for air pressure sensor
+#include "Seeed_BMP280.h"
+
+
+//strings to hold lines in OLED display
+String myMessage = "1st line";
+String myMessage2 = "2nd";
+
+//config for OLED from library
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);  // High speed I2C
 
+//set up pressure sensor object
+BMP280 bmp280;
+
+
 void setup() {
-// config SM
+//begin communication w OLED
+u8g2.begin();
+
+// config Serial monitor & debug
 Serial.begin(9600);
-Serial.println("SM Working");
+Serial.println("SM Working :)");
 Serial.println("---------");
 
-u8g2.begin();
+//begin comm w sensor
+if(!bmp280.init());
+Serial.println("error");
 }
 
+
 void loop() {
-printToOLED (myMessage, myMessage2);
+  
+  printToOLED(myTemp(), myPressure())
 
 }
 
